@@ -42,6 +42,21 @@ cp .env.example .env.local
 pnpm dev
 ```
 
+## 🚢 Deploying to Vercel
+
+This project includes a `vercel.json` configuration so it can be deployed as a static Vite site on [Vercel](https://vercel.com/):
+
+1. Ensure your dependencies are installed locally and all tests pass:
+   ```bash
+   pnpm install
+   pnpm run build
+   ```
+2. Commit your changes and push the repository to GitHub.
+3. In the Vercel dashboard, create a new project and import this repository.
+4. When prompted, use the default **Root Directory** (`.`) and keep the Build and Output settings from `vercel.json` (`pnpm run build` and `dist`).
+5. Add any required environment variables under **Settings → Environment Variables**.
+6. Deploy the project. Subsequent pushes to the default branch will automatically trigger new deployments.
+
 ## 🏗️ Project Structure
 
 ```
