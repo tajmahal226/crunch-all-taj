@@ -1,0 +1,603 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom CSS Variables for Ice/Navy Theme */
+:root {
+  /* Ice/Navy Color Palette */
+  --color-ice: #F5F8FA;
+  --color-ice-dark: #E8F0F5;
+  --color-navy: #002B5B;
+  --color-navy-light: #0066CC;
+  --color-navy-dark: #001B3A;
+  
+  /* Professional Theme Colors */
+  --color-primary: #002B5B;
+  --color-primary-light: #0066CC;
+  --color-secondary: #F5F8FA;
+  --color-accent: #0066CC;
+  
+  /* Typography */
+  --font-body: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-heading: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+/* Base Styles */
+@layer base {
+  html {
+    font-family: var(--font-body);
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    font-family: var(--font-body);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: var(--color-ice);
+    color: var(--color-navy);
+  }
+  
+  /* Dark mode */
+  .dark body {
+    background-color: #0f172a;
+    color: #f1f5f9;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    line-height: 1.2;
+  }
+  
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #f1f5f9;
+  }
+  
+  .dark ::-webkit-scrollbar-track {
+    background: #1e293b;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 4px;
+  }
+  
+  .dark ::-webkit-scrollbar-thumb {
+    background: #475569;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+  }
+  
+  .dark ::-webkit-scrollbar-thumb:hover {
+    background: #64748b;
+  }
+}
+
+/* Component Styles */
+@layer components {
+  /* Professional Calculator Card */
+  .professional-calculator-card {
+    @apply bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700;
+    @apply hover:border-blue-300 dark:hover:border-blue-600 transition-all duration-300;
+    @apply hover:shadow-xl transform hover:-translate-y-2 hover:scale-105;
+    @apply cursor-pointer;
+  }
+  
+  /* Professional Navigation */
+  .professional-navbar {
+    @apply sticky top-0 z-30 bg-white/95 dark:bg-gray-800/95 backdrop-blur-sm;
+    @apply border-b border-gray-200 dark:border-gray-700;
+  }
+  
+  .navbar-logo {
+    @apply flex items-center space-x-3;
+    font-family: var(--font-heading);
+    @apply text-xl font-bold text-gray-900 dark:text-white;
+  }
+  
+  .navbar-nav {
+    @apply hidden md:flex items-center space-x-8;
+  }
+  
+  .navbar-link {
+    @apply text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400;
+    @apply font-medium transition-colors duration-200 px-3 py-2 rounded-lg;
+    @apply hover:bg-gray-50 dark:hover:bg-gray-700;
+  }
+  
+  /* Card Components */
+  .card-heading {
+    @apply text-lg font-semibold text-gray-900 dark:text-white;
+    font-family: var(--font-heading);
+  }
+  
+  .card-description {
+    @apply text-sm text-gray-600 dark:text-gray-300;
+    @apply leading-relaxed;
+  }
+  
+  /* Premium Input Fields */
+  .premium-input {
+    @apply w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl;
+    @apply focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent;
+    @apply bg-white dark:bg-gray-700 text-gray-900 dark:text-white;
+    @apply placeholder-gray-400 dark:placeholder-gray-500;
+    @apply transition-all duration-300;
+    @apply shadow-sm focus:shadow-lg;
+    font-size: 16px !important; /* Prevent zoom on iOS */
+  }
+  
+  /* Professional Card Button */
+  .professional-card-button {
+    @apply bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-xl;
+    @apply font-medium transition-all duration-300;
+    @apply focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2;
+    @apply dark:focus:ring-offset-gray-800;
+    @apply shadow-lg hover:shadow-xl transform hover:-translate-y-1;
+    min-height: 44px;
+  }
+  
+  /* Button Variants */
+  .btn-primary {
+    @apply bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-xl;
+    @apply font-medium transition-all duration-300;
+    @apply focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2;
+    @apply dark:focus:ring-offset-gray-800;
+    @apply shadow-lg hover:shadow-2xl transform hover:-translate-y-2 hover:scale-105;
+  }
+  
+  .btn-secondary {
+    @apply bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600;
+    @apply text-gray-900 dark:text-white px-6 py-3 rounded-xl;
+    @apply font-medium transition-all duration-300;
+    @apply focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2;
+    @apply dark:focus:ring-offset-gray-800;
+    @apply shadow-lg hover:shadow-xl transform hover:-translate-y-1 hover:scale-102;
+  }
+  
+  .btn-outline {
+    @apply border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white;
+    @apply px-6 py-3 rounded-xl font-medium transition-all duration-300;
+    @apply focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2;
+    @apply dark:focus:ring-offset-gray-800;
+    @apply shadow-lg hover:shadow-xl transform hover:-translate-y-1 hover:scale-102;
+  }
+  
+  /* Input Styles */
+  .input-field {
+    @apply w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl;
+    @apply focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent;
+    @apply bg-white dark:bg-gray-700 text-gray-900 dark:text-white;
+    @apply placeholder-gray-400 dark:placeholder-gray-500;
+    @apply transition-all duration-300;
+    @apply shadow-sm focus:shadow-lg;
+  }
+  
+  /* Gradient Backgrounds */
+  .gradient-navy {
+    background: linear-gradient(135deg, var(--color-navy) 0%, var(--color-navy-light) 100%);
+  }
+  
+  .gradient-ice {
+    background: linear-gradient(135deg, var(--color-ice) 0%, var(--color-ice-dark) 100%);
+  }
+  
+  /* Animation Classes */
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  .animate-slide-up {
+    animation: slideUp 0.5s ease-out;
+  }
+  
+  .animate-bounce-in {
+    animation: bounceIn 0.6s ease-out;
+  }
+}
+
+/* Utility Classes */
+@layer utilities {
+  /* GPU Acceleration */
+  .gpu-accelerated {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+  }
+  
+  /* Text Truncation */
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  .line-clamp-4 {
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  /* Glass Morphism */
+  .glass-morphism {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  .dark .glass-morphism {
+    background: rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3) translate3d(0, 0, 0);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translate3d(0, 0, 0);
+  }
+}
+
+/* Focus States for Accessibility */
+.focus-visible:focus {
+  outline: 2px solid #0066CC;
+  outline-offset: 2px;
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+  .professional-calculator-card {
+    @apply border-2;
+  }
+  
+  .btn-primary {
+    @apply border-2 border-blue-800;
+  }
+}
+
+/* iPhone Mobile Optimizations */
+@layer utilities {
+  /* Touch-friendly buttons and interactions */
+  .touch-friendly {
+    min-height: 44px;
+    min-width: 44px;
+    padding: 12px 24px;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+  }
+  
+  /* Prevent zoom on input focus (iPhone specific) */
+  .no-zoom {
+    font-size: 16px !important;
+    transform: scale(1);
+  }
+  
+  /* Safe area handling for iPhone notch and bottom bar */
+  .safe-area-top {
+    padding-top: max(12px, env(safe-area-inset-top));
+  }
+  
+  .safe-area-bottom {
+    padding-bottom: max(12px, env(safe-area-inset-bottom));
+  }
+  
+  .safe-area-left {
+    padding-left: env(safe-area-inset-left);
+  }
+  
+  .safe-area-right {
+    padding-right: env(safe-area-inset-right);
+  }
+  
+  /* Ensure content doesn't get hidden behind browser UI */
+  .safe-padding-bottom {
+    padding-bottom: calc(env(safe-area-inset-bottom) + 24px);
+  }
+}
+
+/* Mobile-specific styles */
+@media (max-width: 768px) {
+  /* Larger touch targets for mobile */
+  button, .btn-primary, .btn-secondary, .btn-outline {
+    min-height: 48px;
+    min-width: 48px;
+    font-size: 16px;
+    padding: 14px 20px;
+  }
+  
+  /* Optimized input fields for mobile */
+  .input-field, input[type="text"], input[type="number"], input[type="email"], select, textarea {
+    font-size: 16px !important;
+    min-height: 48px;
+    padding: 14px 16px;
+    border-radius: 12px;
+  }
+  
+  /* Improved spacing for mobile */
+  .container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  
+  /* Better modal sizing for mobile */
+  .modal-content {
+    margin: 16px;
+    border-radius: 16px;
+    max-height: calc(100vh - 32px);
+    overflow-y: auto;
+  }
+  
+  /* Optimized grid layouts for mobile */
+  .mobile-grid-1 {
+    grid-template-columns: 1fr;
+  }
+  
+  .mobile-grid-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  /* Touch-optimized sidebar */
+  .sidebar-mobile {
+    width: 280px;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .sidebar-mobile.open {
+    transform: translateX(0);
+  }
+}
+
+/* Responsive grid layouts optimized for all screen sizes */
+@media (max-width: 640px) {
+  /* Mobile: Single column */
+  .responsive-grid {
+    grid-template-columns: 1fr !important;
+    gap: 12px;
+  }
+  
+  /* Ensure touch-friendly spacing */
+  .calculator-card {
+    padding: 16px;
+    margin-bottom: 12px;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1023px) {
+  /* Tablet: Two columns */
+  .responsive-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 16px;
+  }
+}
+
+@media (min-width: 1024px) {
+  /* Desktop: Three or four columns based on container */
+  .responsive-grid {
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 20px;
+  }
+}
+
+@media (min-width: 1280px) {
+  /* Large desktop: Four columns */
+  .responsive-grid {
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 24px;
+  }
+}
+
+/* iPhone specific optimizations */
+@media (max-width: 480px) {
+  /* Even larger touch targets for small screens */
+  button, .btn-primary, .btn-secondary, .btn-outline {
+    min-height: 50px;
+    font-size: 16px;
+    padding: 16px 24px;
+  }
+  
+  /* Single column layout for very small screens */
+  .responsive-grid {
+    grid-template-columns: 1fr !important;
+    gap: 12px;
+  }
+  
+  /* Improved typography for mobile readability */
+  h1 {
+    font-size: 2rem;
+    line-height: 1.2;
+  }
+  
+  h2 {
+    font-size: 1.5rem;
+    line-height: 1.3;
+  }
+  
+  h3 {
+    font-size: 1.25rem;
+    line-height: 1.4;
+  }
+  
+  p, .text-base {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+  
+  /* Calculator card optimizations */
+  .calculator-card {
+    padding: 16px;
+    border-radius: 12px;
+    margin-bottom: 12px;
+  }
+  
+  /* Form optimizations */
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  .form-label {
+    font-size: 16px;
+    margin-bottom: 8px;
+    display: block;
+  }
+}
+
+/* Touch and gesture optimizations */
+@media (hover: none) and (pointer: coarse) {
+  /* Remove hover effects on touch devices */
+  .hover\:bg-gray-50:hover {
+    background-color: initial;
+  }
+  
+  .hover\:bg-blue-700:hover {
+    background-color: initial;
+  }
+  
+  /* Add active states for better touch feedback */
+  button:active, .btn-primary:active {
+    transform: scale(0.98);
+    opacity: 0.9;
+  }
+  
+  .touch-feedback:active {
+    background-color: rgba(59, 130, 246, 0.1);
+  }
+}
+
+/* Landscape orientation optimizations for mobile */
+@media (max-width: 768px) and (orientation: landscape) {
+  .hero-section {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+  
+  .modal-content {
+    max-height: calc(100vh - 16px);
+    margin: 8px;
+  }
+}
+
+/* Dark mode mobile optimizations */
+@media (max-width: 768px) {
+  .dark body {
+    background-color: #0f172a;
+  }
+  
+  .dark .calculator-card {
+    background-color: #1e293b;
+    border-color: #334155;
+  }
+  
+  .dark .input-field {
+    background-color: #1e293b;
+    border-color: #334155;
+    color: #f1f5f9;
+  }
+}
+
+/* Accessibility improvements for mobile */
+@media (max-width: 768px) {
+  /* Focus indicators */
+  button:focus-visible, .btn-primary:focus-visible {
+    outline: 3px solid #3b82f6;
+    outline-offset: 2px;
+  }
+  
+  /* Skip link for keyboard navigation */
+  .skip-link {
+    position: absolute;
+    top: -40px;
+    left: 6px;
+    background: #3b82f6;
+    color: white;
+    padding: 8px;
+    text-decoration: none;
+    border-radius: 4px;
+    z-index: 1000;
+  }
+  
+  .skip-link:focus {
+    top: 6px;
+  }
+}
+
+/* Performance optimizations for mobile */
+@media (max-width: 768px) {
+  /* Hardware acceleration for smooth animations */
+  .animate-slide-up, .animate-fade-in, .professional-calculator-card {
+    transform: translateZ(0);
+    will-change: transform;
+  }
+  
+  /* Reduced motion for better performance */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
