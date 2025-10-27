@@ -1,6 +1,6 @@
 import { Calculator } from '../types/calculator';
 
-// Computer Science Calculators (10 total)
+// Computer Science Calculators (1 total)
 export const computerScienceCalculators: Calculator[] = [
   {
     id: 'binary-calculator',

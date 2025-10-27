@@ -1,6 +1,6 @@
 import { Calculator } from '../types/calculator';
 
-// Conversion Calculators (15 total)
+// Conversion Calculators (2 total)
 export const conversionCalculators: Calculator[] = [
   {
     id: 'length-converter',

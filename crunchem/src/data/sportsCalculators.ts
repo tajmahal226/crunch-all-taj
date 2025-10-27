@@ -1,6 +1,6 @@
 import { Calculator } from '../types/calculator';
 
-// Sports Calculators (8+ total)
+// Sports Calculators (8 total)
 export const sportsCalculators: Calculator[] = [
   {
     id: 'fantasy-sports-points',

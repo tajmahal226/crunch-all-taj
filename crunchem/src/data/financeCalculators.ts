@@ -1,6 +1,6 @@
 import { Calculator } from '../types/calculator';
 
-// Finance Calculators (15 total)
+// Finance Calculators (14 total)
 export const financeCalculators: Calculator[] = [
   {
     id: 'compound-interest-calculator',

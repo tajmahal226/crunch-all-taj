@@ -1,6 +1,6 @@
 import { Calculator } from '../types/calculator';
 
-// Geometry Calculators (15 total)
+// Geometry Calculators (14 total)
 export const geometryCalculators: Calculator[] = [
   {
     id: 'area-calculator',

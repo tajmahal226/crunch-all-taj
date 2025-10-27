@@ -1,6 +1,6 @@
 import { Calculator } from '../types/calculator';
 
-// Algebra Calculators (15 total)
+// Algebra Calculators (3 total)
 export const algebraCalculators: Calculator[] = [
   {
     id: 'linear-equations-solver',
