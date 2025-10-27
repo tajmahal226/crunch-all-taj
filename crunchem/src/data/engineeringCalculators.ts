@@ -1,6 +1,6 @@
 import { Calculator } from '../types/calculator';
 
-// Engineering Calculators (10 total)
+// Engineering Calculators (1 total)
 export const engineeringCalculators: Calculator[] = [
   {
     id: 'ohms-law-calculator',

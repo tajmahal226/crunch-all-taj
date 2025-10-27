@@ -1,6 +1,6 @@
 import { Calculator } from '../types/calculator';
 
-// Health/Fitness Calculators (10 total)
+// Health/Fitness Calculators (1 total)
 export const healthFitnessCalculators: Calculator[] = [
   {
     id: 'bmi-calculator',
