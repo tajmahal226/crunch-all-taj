@@ -601,3 +601,60 @@
     scroll-behavior: auto !important;
   }
 }
+
+
+/* Sidebar Improvements - Remove any unwanted badges or pseudo-elements */
+@layer components {
+  /* Ensure no pseudo-elements create badges on sidebar buttons */
+  .sidebar button::before,
+  .sidebar button::after,
+  [class*="sidebar"] button::before,
+  [class*="sidebar"] button::after {
+    content: none !important;
+    display: none !important;
+  }
+  
+  /* Clean sidebar category buttons */
+  .sidebar-category-button {
+    position: relative;
+    overflow: visible;
+  }
+  
+  /* Prevent any absolute positioned children from appearing as badges */
+  .sidebar-category-button > *[class*="absolute"] {
+    display: none !important;
+  }
+  
+  /* Enhanced sidebar styling */
+  .sidebar-category-item {
+    @apply transition-all duration-200 ease-in-out;
+  }
+  
+  .sidebar-category-item:hover {
+    @apply transform translate-x-1;
+  }
+  
+  /* Smooth scrolling for sidebar */
+  .sidebar-scroll {
+    scrollbar-width: thin;
+    scrollbar-color: #cbd5e1 transparent;
+  }
+  
+  .sidebar-scroll::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  .sidebar-scroll::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  .sidebar-scroll::-webkit-scrollbar-thumb {
+    background-color: #cbd5e1;
+    border-radius: 3px;
+  }
+  
+  .dark .sidebar-scroll::-webkit-scrollbar-thumb {
+    background-color: #475569;
+  }
+}
+
