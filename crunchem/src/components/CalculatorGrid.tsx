@@ -27,7 +27,9 @@ const CalculatorGrid: React.FC<CalculatorGridProps> = ({ className = '' }) => {
   
   // Filter and sort calculators
   const filteredCalculators = useMemo(() => {
-    let calculators = searchQuery ? searchCalculators(searchQuery) : allCalculators;
+    let calculators = searchQuery
+      ? Array.from(searchCalculators(searchQuery))
+      : Array.from(allCalculators);
     
     // Filter by category
     if (selectedCategory !== 'All') {
