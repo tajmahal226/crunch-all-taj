@@ -2,6 +2,7 @@ import React from 'react';
 import { Calculator, X, Star, Folder, ChevronRight } from 'lucide-react';
 import { useApp } from '../contexts/AppContext';
 import { calculatorCategories, getCalculatorsByCategory } from '../data/allCalculators';
+import './SidebarFix.css';
 
 interface SidebarProps {
   className?: string;

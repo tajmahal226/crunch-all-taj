@@ -1,0 +1,87 @@
+/* AGGRESSIVE FIX: Remove ALL unwanted badges from sidebar categories */
+
+/* Target the parent div.group and hide any absolutely positioned children */
+div.group {
+  position: relative !important;
+}
+
+div.group > *[style*="position: absolute"],
+div.group > *[style*="position:absolute"] {
+  display: none !important;
+}
+
+/* Hide any element that looks like a badge (small, colored, positioned) */
+div.group > div[class*="absolute"],
+div.group > span[class*="absolute"],
+div.group > div[class*="top-"],
+div.group > span[class*="top-"],
+div.group > div[class*="right-"],
+div.group > span[class*="right-"] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* Remove all pseudo-elements from group divs and their children */
+div.group::before,
+div.group::after,
+div.group > *::before,
+div.group > *::after,
+div.group button::before,
+div.group button::after {
+  content: none !important;
+  display: none !important;
+}
+
+/* Hide small colored badges with numbers */
+div.group [class*="bg-pink"],
+div.group [class*="bg-purple"],
+div.group [class*="bg-orange"],
+div.group [class*="bg-teal"],
+div.group [class*="bg-yellow"],
+div.group [class*="bg-red"],
+div.group [class*="bg-blue"] {
+  /* Only hide if they're small and positioned */
+}
+
+div.group [class*="text-xs"][class*="rounded"][class*="px-"],
+div.group [class*="text-xs"][class*="rounded"][class*="py-"] {
+  /* Check if they're absolutely positioned */
+}
+
+/* Nuclear option: hide any small element with a solid background color in top-right */
+div.group > div:not(button):not([class*="flex"]):not([class*="space"]) {
+  position: relative !important;
+}
+
+/* Specifically target numbered badges (7, 6, 9, 10, etc.) */
+div.group > div[class*="text-white"],
+div.group > span[class*="text-white"] {
+  /* Only if they contain just numbers */
+}
+
+/* Hide elements with specific badge-like styling patterns */
+[class*="rounded-full"][class*="text-xs"][class*="absolute"],
+[class*="rounded"][class*="text-xs"][class*="absolute"][class*="px-"],
+[class*="rounded"][class*="text-xs"][class*="absolute"][class*="py-"] {
+  display: none !important;
+}
+
+/* Sidebar-specific overrides */
+[class*="sidebar"] div.group > *:not(button):not([class*="mt-"]):not([class*="border-l"]),
+[class*="Categories"] div.group > *:not(button):not([class*="mt-"]):not([class*="border-l"]) {
+  /* Allow only buttons and expanded content */
+}
+
+/* Final nuclear option: hide all absolutely positioned elements in sidebar */
+[class*="fixed"][class*="left-0"] *[class*="absolute"]:not([class*="placeholder"]):not([class*="focus"]) {
+  display: none !important;
+}
+
+/* Override any inline styles that might be adding badges */
+div.group[style],
+div.group > *[style] {
+  position: relative !important;
+}
+
