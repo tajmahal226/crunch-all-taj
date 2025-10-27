@@ -1,8 +1,8 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "buildCommand": "cd crunchem && pnpm run build",
-  "devCommand": "cd crunchem && pnpm run dev",
-  "installCommand": "cd crunchem && pnpm install --no-frozen-lockfile",
+  "buildCommand": "cd crunchem && npm run build",
+  "devCommand": "cd crunchem && npm run dev",
+  "installCommand": "cd crunchem && npm install",
   "framework": "vite",
   "outputDirectory": "crunchem/dist"
 }
