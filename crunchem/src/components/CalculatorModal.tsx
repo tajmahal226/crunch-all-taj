@@ -63,19 +63,46 @@ const CalculatorModal: React.FC<CalculatorModalProps> = ({ calculator, onClose }
   const handleCalculate = () => {
     setIsCalculating(true);
     setError('');
-    
+
     try {
-      // Validate required inputs
+      // Validate required inputs while respecting falsy-but-valid values (like 0)
       const missingInputs = calculator.inputs
-        .filter(input => input.required && (!inputs[input.id] || inputs[input.id] === ''))
+        .filter(input => {
+          if (!input.required) return false;
+
+          const hasUserValue = Object.prototype.hasOwnProperty.call(inputs, input.id);
+          const value = hasUserValue ? inputs[input.id] : input.defaultValue;
+
+          if (value === undefined || value === null) {
+            return true;
+          }
+
+          if (typeof value === 'string') {
+            return value.trim() === '';
+          }
+
+          return false;
+        })
         .map(input => input.label);
-      
+
       if (missingInputs.length > 0) {
         throw new Error(`Please fill in: ${missingInputs.join(', ')}`);
       }
-      
+
+      // Merge provided inputs with defaults for calculation
+      const calculationInputs = calculator.inputs.reduce<Record<string, any>>((acc, input) => {
+        const hasUserValue = Object.prototype.hasOwnProperty.call(inputs, input.id);
+        const value = hasUserValue ? inputs[input.id] : input.defaultValue;
+
+        if (value !== undefined) {
+          acc[input.id] = value;
+        }
+
+        return acc;
+      }, {});
+
       // Perform calculation
-      const result = calculator.calculate(inputs);
+      const result = calculator.calculate(calculationInputs);
       setResults(result.results);
       setExplanation(result.explanation);
       setSteps(result.steps);
