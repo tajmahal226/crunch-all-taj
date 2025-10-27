@@ -5,7 +5,7 @@ export const engineeringCalculators: Calculator[] = [
   {
     id: 'ohms-law-calculator',
     title: "Ohm's Law Calculator",
-    description: 'Calculate voltage, current, resistance, and power using Ohms Law.',
+    description: "Calculate voltage, current, resistance, and power using Ohm's Law.",
     category: 'Engineering',
     inputs: [
       { id: 'known_values', label: 'Known Values', type: 'select', required: true, options: [
