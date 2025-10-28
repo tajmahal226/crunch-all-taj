@@ -1,10 +1,15 @@
 import path from "path"
 import react from "@vitejs/plugin-react"
-import { defineConfig } from "vite"
+import { defineConfig, type UserConfig } from "vite"
 import sourceIdentifierPlugin from 'vite-plugin-source-info'
 
+type TestConfig = {
+  environment?: string
+  include?: string[]
+}
+
 const isProd = process.env.BUILD_MODE === 'prod'
-export default defineConfig({
+const config = {
   plugins: [
     react(),
     sourceIdentifierPlugin({
@@ -22,5 +27,7 @@ export default defineConfig({
     environment: 'jsdom',
     include: ['src/**/*.test.ts', 'src/**/*.test.tsx', 'src/**/*.spec.ts', 'src/**/*.spec.tsx']
   }
-})
+} satisfies UserConfig & { test: TestConfig }
+
+export default defineConfig(config)
 
